@@ -23,13 +23,13 @@ def departamentos(request):
     context = {'departamentos':depto}
     return render(request, 'departamentos.html', context)
 
-def categorias(request):
-    categ = Categoria.objects.all()
+def categorias(request, id):
+    categ = Categoria.objects.filter(departamento_id=id)
     context = {'categorias':categ}
     return render(request, 'categorias.html', context)           
 
-def produtos(request):
-    prod = Produto.objects.all()
+def produtos(request, id):
+    prod = Produto.objects.filter(categoria_id=id)
     context = {'produtos':prod}
     return render(request, 'produtos.html', context)        
 
