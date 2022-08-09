@@ -36,8 +36,7 @@ def produtos(request, id):
     return render(request, 'produtos.html', context)
 
 def produto_detalhe(request, id):
-    detalhes = Produto.objects.filter(categoria_id=id)
-    categ = Categoria.objects.get(id = id)
-    context = {'produtos':detalhes, 'categoria':categ}
+    detalhes = Produto.objects.get(id = id)
+    context = {'produto':detalhes}
     return render(request, 'produto_detalhe.html', context)        
 

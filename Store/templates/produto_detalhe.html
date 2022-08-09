@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nome do Produto</title>
+    <title>{{produto.nome}}</title>
 </head>
 <body>
     <h1>Nome do Produto {{ produto.nome }} </h1>
+    <h5>{{produto.categoria.departamento.nome}} >> {{produto.categoria.nome}}</h5>
+    <img src="{{ produto.imagem.url }}" width="200">
+    {% if prod.lancamento == True %}
+    <h2>Lançamento!!!</h2>
+    {% endif %}
+    <p>{{produto.descricao|linebreaks}}</p>
+    <h3>Preço: R$ {{produto.preco }}</h3>
+    <h3>Estoque: {{ produto.estoque }}</h3>
 
-    {% for prod in produto_detalhe %}
-        <img src="{{ prod.imagem.url }}" width="120">
-        {% if prod.lancamento == True %}
-        Lançamento!!!
-        {% endif %}
 </body>
 </html>
