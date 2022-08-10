@@ -1,0 +1,13 @@
+{% load static %}
+<div id= "topo">
+    <a href="{% url 'index' %}">
+    <img src= "{% static 'img/logo_senac.jpg' %}" width='150'>
+    <ul>
+        <li><a href="{% url 'departamentos' %}" >
+            Departamentos </a></li>
+        <li><a href="{% url 'contato' %}" >
+            Contato </a></li>
+        <li><a href="{% url 'institucional' %}" >
+            Sobre a empresa</a></li>
+    </ul>
+</div>        
