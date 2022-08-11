@@ -12,7 +12,8 @@
 <body>
     <h1>Contato</h1>
     
-    <form method="post" action="">
+    <form method="post" action="{% url 'enviar_contato' %}">
+        {% csrf_token %}
        Nome:<br> <input name="nome">
        <br><br>
        E-mail:<br><input name="email">
@@ -21,9 +22,14 @@
        <br><br>
        Assunto:<br><input name="assunto">
        <br><br>
-       Mensagem:<br><input name="mensagem">
+       Mensagem:<br><textarea name="mensagem"></textarea>
        <br><br>
        <input type="submit" value="enviar">
     </form>
+
+    {% if msg != '' %}
+        <p> {{ msg }}</p>
+    {% endif %}
+
 </body>
 </html>

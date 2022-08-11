@@ -3,7 +3,7 @@ from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 from Store.models import Departamento, Categoria, Produto 
-
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -45,3 +45,21 @@ def institucional(request):
 
 def contato(request):
     return render(request, 'contato.html')
+
+def enviar_email(request):
+    nome = request.POST['nome']
+    telefone = request.POST['telefone']
+    assunto = request.POST['assunto']
+    mensagem = request.POST['mensagem']
+    remetente = request.POST['email']
+    destinatario = ['tiago.efigenio@gmail.com']
+    corpo = f"Nome: {nome} \n Telefone: {telefone} \n Mensagem: {mensagem} \n Assunto:{assunto}"
+
+    try:    
+        send_mail(assunto, corpo, remetente, destinatario)          
+        context= {'msg':'E-mail enviado com sucesso!'}
+
+    except:
+        context= {'msg':'Erro ao enviar e-mail!'}
+
+    return render(request, 'contato.html', context)    
